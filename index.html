@@ -108,7 +108,7 @@
 		{
 				let feepaid=document.querySelector('#fp');
 				let fee_val=feepaid.value;
-				let due_fee=(tot.value)-((fee_val)-((discount.value/tot.value)*100));
+				let due_fee=((tot.value)-(fee_val))-((discount.value*tot.value)/100);
 				due.value=due_fee;
 		});			
 	</script>
