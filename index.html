@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fee</title>
+	<link rel="stylesheet" href="mdb/css/bootstrap.css">
+  <link rel="stylesheet" href="mdb/css/mdb.css">
+</head>
+<body class="bg-warning">
+	<div class="container bg-secondary mt-5">
+			<div class="card-header bg-secondary text-white text-center">
+						<h3>Fee Calculator</h3>
+			</div>
+			<div class="container-fluid card-warning mt-3">
+				<table class="table text-center">
+					<tr>
+						<td>
+							<label class="text-light lead">Courses : </label>
+						</td>
+						<td>
+							<input class="text-center lead" list="crse" id="course" value="">
+							<datalist id="crse">
+								<option value="Machine Learning">
+								<option value="Artificial Intelligence">
+								<option value="IOT">
+								<option value="Ethical Hacking">
+								<option value="Artificial Neural Networks">
+							</datalist>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="text-light lead">Total Fee : </label>
+						</td>
+						<td>
+							<input class="text-center lead" type="number" id="tf" value="" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="text-light lead">Caste : </label>
+						</td>
+						<td>
+							<input class="text-center lead" type="radio" name="r1">OC
+							<input class="text-center lead" type="radio" name="r1">BC
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="text-light lead">Discount : </label>
+						</td>
+						<td>
+							<input class="text-center lead" type="number" id="disc" value="" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="text-light lead">Fee Paid : </label>
+						</td>
+						<td>
+							<input class="text-center lead" type="number" id="fp" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="text-light lead">Due Fee : </label>
+						</td>
+						<td>
+							<input class="text-center lead" type="number" id="df" value="" readonly>
+						</td>
+					</tr>
+				</table>
+				<div class="card-header m-5 bg-success text-white text-center">
+					<button class="btn bg-primary ml-5 text-center lead">calculate</button>
+				</div>
+					
+			</div>
+	</div>
+	<script>
+		let crs_li=document.querySelector('#course');
+		let tot=document.querySelector('#tf');
+		let discount=document.querySelector('#disc');
+		let due=document.querySelector('#df');
+		let cal=document.querySelector('.btn');
+		crs_li.addEventListener('change',function()
+		{
+			if(crs_li.value==='Machine Learning')
+				{
+					tot.value=20000;
+					discount.value=5;
+				}
+			if(crs_li.value==='Artificial Intelligence')
+				{
+					tot.value=30000;
+					discount.value=7;
+				}
+			if(crs_li.value==='Ethical Hacking')
+				{
+					tot.value=20000;
+					discount.value=10;
+				}
+			if(crs_li.value==='Artificial Neural Networks')
+				{
+					tot.value=17000;
+					discount.value=20;
+				}
+		});
+		cal.addEventListener('click',function()
+		{
+				let feepaid=document.querySelector('#fp');
+				let fee_val=feepaid.value;
+				let due_fee=(tot.value)-((fee_val)-((discount.value/tot.value)*100));
+				due.value=due_fee;
+		});			
+	</script>
+</body>
+</html>
